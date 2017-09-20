@@ -7,26 +7,19 @@ The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
 Find the sum of all the primes below two million.
 
-                R: 
+                R: 142913828922
 """
 
-import time
-
-descobrir = 2000000
-primos = [2]
-n = 3
-verifica = 0
-tempo = time.time()
-while verifica < descobrir:
-    eh_primo = True
-    for i in primos:
-        # print(i)
+def isPrime(n):
+    if n < 2: return "Neither prime, nor composite"
+    for i in range(2, int(n**0.5) + 1):
         if n % i == 0:
-            eh_primo = False
-            break
-    if eh_primo:
-        primos.append(n)
-        verifica = i
-    n += 2
-print(sum(primos))
-print('Tempo de execução: %2f' % (time.time() - tempo))
+            return False
+    return True
+
+sum = 0
+for i in range(2, 2000000):
+    if isPrime(i):
+        sum += i
+
+print (sum)
